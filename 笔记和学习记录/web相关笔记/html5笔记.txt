@@ -1,0 +1,78 @@
+1.<!DOCTYPE HTML> 不区分大小写
+2.新增的HTML5标签-结构标签
+结构标签：(块状元素) 有意义的div
+	<article>	 标记定义一篇文章
+	<header>	 标记定义一个页面或一个区域的头部
+ 	<nav> 		标记定义导航链接
+	<section>	 标记定义一个区域
+	<aside> 	标记定义页面内容部分的侧边栏
+	<hgroup>	 标记定义文件中一个区块的相关信息
+	<figure> 	标记定义一组媒体内容以及它们的标题	
+	<figcaption>	 标签定义 figure 元素的标题。
+	<footer> 	标记定义一个页面或一个区域的底部
+	<dialog>	 标记定义一个对话框(会话框)类似微信
+
+新的结构标签带来的是网页布局的改变及提升对搜索引擎的友好
+
+新增的HTML5标签-多媒体标签
+多媒体交互标签
+
+	<video> 标记定义一个视频
+	<audio> 标记定义音频内容
+ 	<source> 标记定义媒体资源
+
+	<canvas> 标记定义图片
+
+	<embed> 标记定义外部的可交互的内容或插件 比如flash
+
+
+HTML5的多媒体标签的出现意味着富媒体的发展以及支持不使用插件的情况下即可操作媒体文件，极大地提升了用户体验
+
+新增的HTML5标签-Web应用标签
+Web应用标签
+
+<menu>命令列表
+<menuitem>menu命令列表标签 FF（嵌入系统）
+<command> menu标记定义一个命令按钮
+
+<meter>状态标签(实时状态显示:气压、气温)C、O
+<progress>状态标签 (任务过程:安装、加载) C、F、O
+
+<datalist> 为input标记定义一个下拉列表,配合option F、O
+<details> 标记定义一个元素的详细内容 ，配合dt、dd   C
+
+新增的HTML5标签-其他标签
+注释标签
+<ruby> 标记定义 注释或音标
+<rp> 告诉那些不支持 Ruby元素的浏览器如何去显示
+ <rt> 标记定义对ruby的注释内容文本
+
+其他标签
+<keygen> 标记定义表单里一个生成的键值(加密信息传送)O、F
+<mark> 标记定义有标记的文本 (黄色选中状态)
+<output> 标记定义一些输出类型,计算表单结果配合oninput事件
+
+
+<time> 标记定义一个日期/时间 目前所有主流浏览器都不支持
+
+删除的HTML标签
+纯表现的元素：
+basefont，big，center，font, s，strike，tt，u；
+
+对可用性产生负面影响的元素：
+frame，frameset，noframes；
+
+产生混淆的元素：
+acronym ，applet，isindex，dir。
+
+
+重新定义的HTML标签
+
+
+
+3.video使用
+4.canvas使用
+
+
+
+

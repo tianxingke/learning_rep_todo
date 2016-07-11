@@ -1,0 +1,26 @@
+1.<bean id="helloWorld" class="com.tianxingke.spring.beans.HelloWorld">
+<property name="name2" value="spring"></property>
+</bean>
+property中name的值（即name2）要和bean中setName2（）set方法名字对应。
+
+ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+	HelloWorld helloWorld = (HelloWorld) ctx.getBean("helloWorld");
+此new过程为调用helloworld的无参构造器初始化，并调用set方法进行属性的赋值。
+
+
+2.在 Spring IOC 容器读取 Bean 配置创建 Bean 实例之前, 必须对它进行实例化. 只有在容器实例化后, 才可以从 IOC 容器里获取 Bean 实例并使用.
+Spring 提供了两种类型的 IOC 容器实现. 
+--BeanFactory: IOC 容器的基本实现.
+--ApplicationContext: 提供了更多的高级特性. 是 BeanFactory 的子接口.
+
+BeanFactory 是 Spring 框架的基础设施，面向 Spring 本身；ApplicationContext 面向使用 Spring 框架的开发者，几乎所有的应用场合都直接使用 ApplicationContext 而非底层的 BeanFactory
+无论使用何种方式, 配置文件时相同的.
+
+ApplicationContext 在初始化上下文时就实例化所有单例的 Bean。
+
+WebApplicationContext 是专门为 WEB 应用而准备的，它允许从相对于 WEB 根目录的路径中完成初始化工作
+
+
+3.若xml中字面值中包含特殊字符，可以使用 <![CDATA[]]> 把字面值包裹起来。
+4.属性必须先初始化才可以为级联属性赋值。
+

@@ -1,0 +1,29 @@
+1.springMVC会把ModelAndView的model中数据放到request域对象中。
+2.springMVC返回值
+	可以使用 
+	public String t1(Map<String,Object> map){
+		map.put();//把要返回的数据放进来。
+
+
+		return "";//返回视图     其实还是放入了model中（同1）
+	}
+3.sessionattributes注解 可以将原本放在请求域中的数据同时也放在session域里边。把数据的名字写进去。可以根据名字，也可以根据类型。此注解只能放在类上边。
+
+
+@SessionAttributes(value={"user"},types={String.class})  //可以只用一个，也可以同时使用
+public XXXclass{
+
+	public String t1(Map<String,Object> map){
+		User user = new User();
+		map.put("user",user);
+
+
+		return "";
+	}
+
+}
+
+4.有@ModelAttribute的方法会在，其他任意一个controller执行之前被springMVC调用。
+5.视频20
+6.sessionattributes引发的异常。
+7.处理json，在方法上加responseBody ，直接返回集合就可以了。（要把Jackson的jar包加进来）
