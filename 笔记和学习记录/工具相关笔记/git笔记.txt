@@ -1,4 +1,4 @@
-1.
+﻿1.
 .git 路径问题：递归找最近的那个。
 2.
 提交后，用git diff HEAD -- readme.txt命令可以查看工作区和版本库里面最新版本的区别：
@@ -15,3 +15,55 @@ git checkout -- file命令中的--很重要，没有--，就变成了“切换�
 6.删除版本库的文件
 git rm 	<file>
 然后提交
+
+
+1.创建git库
+	使用git init <目录名>  将目录作为库来使用，如果目录名不写，会默认使用当前目录进行。操作后会在目录下出现.git目录。
+
+2.提交
+	要把文件纳入git管理：
+	git add 文件
+	git commit -m '这是提交的描述'
+
+3.克隆
+	使用git clone 从现有git库拷贝项目（类似SVN checkout）
+	git clone <git库url> <指定要保存的路径>  
+	例子：$ git clone git://github.com/schacon/grit.git
+
+	也可以指定下载下来的项目的名称，在命令的末尾加上自定义的名字
+	例子：git clone git://github.com/schacon/grit.git mygrit
+
+4.add
+	将文件提交到缓存要执行 ： git add 文件
+	此时运行：git status -s 后 状态是：A 文件
+	如果又更改了文件，则状态变成：AM 文件
+	-s 参数，以获得简短的结果输出。如果没加该参数会详细输出内容
+
+5.diff
+	git diff
+	执行 git diff 来查看执行 git status 的结果的详细信息。
+	git diff 命令显示已写入缓存与已修改但尚未写入缓存的改动的区别。git diff 有两个主要的应用场景。
+	尚未缓存的改动：git diff
+	查看已缓存的改动： git diff --cached
+	查看已缓存的与未缓存的所有改动：git diff HEAD
+	显示摘要而非整个 diff：git diff --stat
+
+16.连接github步骤：
+	a).创建ssh key
+	在git bash 里边，$ ssh-keygen -t rsa -C "youremail@example.com"
+
+	b).第2步：登陆GitHub，打开“Account settings”，“SSH Keys”页面：
+	然后，点“Add SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容
+
+17.关联远程github仓库（先有本地库，将本地同步到远端）
+git init
+git remote add origin https://github.com/tianxingke/demo.git
+
+推送
+git push -u origin master
+
+
+？？？
+推送和更新单文件
+
+18。关联远程github仓库（先有远端库，将远端同步到本地）
