@@ -87,3 +87,90 @@ git merge tmp
 推送和更新单文件
 
 18。关联远程github仓库（先有远端库，将远端同步到本地）
+
+
+19.分之管理
+首先，我们创建dev分支，然后切换到dev分支：
+
+$ git checkout -b dev
+Switched to a new branch 'dev'
+git checkout命令加上-b参数表示创建并切换，相当于以下两条命令：
+$ git branch dev
+$ git checkout dev
+Switched to branch 'dev'
+
+然后，用git branch命令查看当前分支：
+$ git branch
+* dev
+  master
+
+  切换分之：
+ $ git checkout master
+
+ 把dev分支的工作成果合并到master分支上：
+$ git merge dev
+合并完成后，就可以放心地删除dev分支了：
+$ git branch -d dev
+
+
+Git鼓励大量使用分支：
+
+查看分支：git branch     git branch -a 命令可以查看所有分支
+
+创建分支：git branch <name>
+
+切换分支：git checkout <name>
+
+创建+切换分支：git checkout -b <name>
+
+合并某分支到当前分支：git merge <name>
+
+删除分支：git branch -d <name>
+
+20.冲突
+修改了连个分之，然后想合并到master ，此时就可能出现冲突。
+这时要手动修改冲突文件，并提交即可。最后删除分之。
+
+用带参数的git log也可以看到分支的合并情况：
+$ git log --graph --pretty=oneline --abbrev-commit
+
+21.分之管理策略
+http://www.oschina.net/question/31384_157479
+通常，合并分支时，如果可能，Git会用Fast forward模式，但这种模式下，删除分支后，会丢掉分支信息。
+如果要强制禁用Fast forward模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。
+$ git merge --no-ff -m "merge with no-ff" dev
+
+
+一般企业中开发一个项目的分支策略：
+主分支 master
+开发分支 develop
+功能分支 feature
+预发布分支  release
+bug 分支 fixbug
+其它分支 other
+
+Git还提供了一个stash功能，可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作：
+$ git stash
+
+git stash list命令查看隐藏的
+工作现场还在，Git把stash内容存在某个地方了，但是需要恢复一下，有两个办法：
+一是用git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除；
+另一种方式是用git stash pop，恢复的同时把stash内容也删了：
+$ git stash pop
+
+
+分支还没有被合并过时，如果删除，将丢失掉修改，如果要强行删除，需要使用命令git branch -D feature-vulcan
+
+
+22.多人协作
+$ git clone git@github.com:michaelliao/learngit.git
+
+要查看远程库的信息，用git remote
+用git remote -v显示更详细的信息
+
+从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交；
+在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
+建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name；
+从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
+
+
