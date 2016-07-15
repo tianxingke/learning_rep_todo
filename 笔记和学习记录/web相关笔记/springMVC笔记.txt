@@ -27,3 +27,7 @@ public XXXclass{
 5.视频20
 6.sessionattributes引发的异常。
 7.处理json，在方法上加responseBody ，直接返回集合就可以了。（要把Jackson的jar包加进来）
+
+
+
+springMVC原理：

@@ -52,8 +52,7 @@ git rm 	<file>
 	a).创建ssh key
 	在git bash 里边，$ ssh-keygen -t rsa -C "youremail@example.com"
 
-	b).第2步：登陆GitHub，打开“Account settings”，“SSH Keys”页面：
-	然后，点“Add SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容
+	b).粘贴id_rsa.pub文件的内容
 
 17.关联远程github仓库（先有本地库，将本地同步到远端）
 git init
