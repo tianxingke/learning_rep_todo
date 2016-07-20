@@ -1,2 +1,161 @@
-一、
+一、基本类型
+	int
+	int默认值为0，Interge默认值为null，即Integer可以区分出未赋值和值为0的区别，int则无法表达出未赋值的情况。声明为int的变量不需要实例化，声明为Interger的变量需要实例化。
+	基本数据类型和对象比较的时候，对象会自动拆箱为基本数据类型再比较,比较的就是里面的值而不是地址。
+	int基本类型之间的比较是值的比较。
+
+	情况1）:
+	Integer e = new Integer(127);
+	Integer f = new Integer(127);
+	System.out.println(e==f);   //false
+
+	Integer a = new Integer(127);	
+	Integer b = 127;
+	System.out.println(a==b); //false
+	此种情况时两个new的对象间的比较，比较的是对象的地址。
+	
+	情况2）:
+		Integer a = new Integer(127);	
+		Integer b = 127;
+		int c=127;
+		System.out.println(a==b);	//false
+		System.out.println(b==c);	//true
+		System.out.println(a==c);	//true
+		
+		Integer e = new Integer(128);	
+		Integer f = 128;
+		int g=127;
+		System.out.println(e==f);	//false
+		System.out.println(f==g);	//true	
+		System.out.println(e==g);	//true
+	此种情况下，对象比较同上。b与c，f与g比较时，b、f自动拆箱，变成int b=127，int f=128 然后分别进行比较，比较的是值。
+
+	情况3）:
+		Integer a=127;
+		Integer b=127;
+		Integer c=128;
+		Integer d=128;
+		
+		System.out.println(a==b);	//true
+		System.out.println(c==d);	//false
+
+	此种情况下，自动装箱为对象，如果值在[-128~127]之间，则取缓存的值，否则重新创建对象。
+
+	
+二、String
+	new对象和常量池的概念
+	java中基本类型的包装类的大部分都实现了常量池技术，即Byte,Short,Integer,Long,Character,Boolean。但是两种浮点数类型的包装类Float,Double并没有实现常量池技术。
+	情况1）:
+		String a = "123";
+		String b = "123";
+		System.out.println(a == b);	//true
+		在java中，字符串字面值是常量，所以保存在常量池中，而不是堆栈里。a与b的值是在常量池中，且是一个，赋值时先在常量池中查找是否有这个值，如果有则不创建新的。
+
+	情况2）:
+		String c = new String("456");
+		String d = new String("456");
+		System.out.println(c == d);	//false
+		是new的，存在堆中，是地址不同的对象。
+
+	情况3）:
+		String e = "789";
+		String f = new String("789");
+		System.out.println(e == f);	//false
+		e在常量池中，f在堆中，地址不一样。
+
+	情况4）:
+		String str1 = "str";
+		String str2 = "ing";
+
+		String str3 = "str" + "ing";
+		String str4 = str1 + str2;
+		System.out.println(str3 == str4);	//false
+
+		String str5 = "string";
+		System.out.println(str3 == str5);	//true
+		System.out.println(str4 ==str5);	//false
+
+	（1）只有使用引号包含文本的方式创建的String对象之间使用“+”连接，产生的新对象才会被加入字符串池中。
+	（2）对于所有包含new方式新建对象（包括null）的“+”连接表达式，它所产生的新对象都不会被加入字符串池中。
+
+		特例：
+		public class Test01 {
+			final static String a = "123";
+			final static String b = "456";
+
+			public static void main(String[] args) {
+
+				String c = a + b;
+				String d = "123456";
+				System.out.println(c == d);	//true
+			}
+		}
+		a和b都是常量，值是固定的，因此c的值也是固定的，它在类被编译时就已经确定了。如果a，b延迟赋值则结果就是false。
+
+	String s1 = new String("xyz"); 创建了几个实例？
+	有人说两个？有人说jdk1.6以及以前会将字符串实例复制到永久代中，jdk1.7后改为复制实例的引用。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
