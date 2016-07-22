@@ -95,6 +95,18 @@
 	String s1 = new String("xyz"); 创建了几个实例？
 	有人说两个？有人说jdk1.6以及以前会将字符串实例复制到永久代中，jdk1.7后改为复制实例的引用。
 
+三、数组
+	int[] a = new int[10];
+	System.out.println(a.getClass().getName());	//[I [代表了维度
+	数组也是一个对象，是object的直接子类。
+
+	//初始化的方法：
+	int b[] = new int[] {1,2,3,4,5};    
+        int c[] = {1,2,3,4,5};
+
+
+
+
 
 
 
