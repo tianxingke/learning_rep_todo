@@ -1,2 +1,8 @@
 一‘Zookeeper相关
-	1.
+	1.ZooKeeper中概念
+	集群角色：Leader，Follower，Observer
+	会话：
+	数据节点：
+	版本：
+	
+	
