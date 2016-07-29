@@ -35,7 +35,8 @@
 	
 	substring()返回指定索引区间的子串
 	
-6.	请注意，直接给Array的length赋一个新的值会导致Array大小的变化：
+6.Array	
+请注意，直接给Array的length赋一个新的值会导致Array大小的变化：
 	var arr = [1, 2, 3];
 	arr.length; // 3
 	arr.length = 6;
@@ -98,7 +99,8 @@
 	
 	reverse()把整个Array的元素给掉个个，也就是反转
 	
-	splice()方法是修改Array的“万能方法”，它可以从指定的索引开始删除若干元素，然后再从该位置添加若干元素：
+	splice()方法是修改Array的“万能方法”，splice() 方法会直接对数组进行修改。
+	它可以从指定的索引开始删除若干元素，然后再从该位置添加若干元素：
 	var arr = ['Microsoft', 'Apple', 'Yahoo', 'AOL', 'Excite', 'Oracle'];
 	// 从索引2开始删除3个元素,然后再添加两个元素:
 	arr.splice(2, 3, 'Google', 'Facebook'); // 返回删除的元素 ['Yahoo', 'AOL', 'Excite']
