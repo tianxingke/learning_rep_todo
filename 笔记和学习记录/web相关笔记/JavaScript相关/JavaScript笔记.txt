@@ -162,6 +162,13 @@ var foo = new Foo();
 
 然而，给这个空对象添加了一个叫__proto__的属性，而且这个__proto__指向Foo()的prototype对象。换句话说，就是__proto__ = prototype;
 	
+
+2.json整理
+可以在前端页面如下组织：
+var datas = '{"program":"'+program.value+'","element09":"'+element09.value
+				+'","bdgagency":"'+bdgagency.value+'","expfunc":"'+expfunc.value
+				+'","fundtype":"'+fundtype.value+'","text2":"'+text2.value+'"}';
+其中可以拼接一些变量。
 	
 	
 	
