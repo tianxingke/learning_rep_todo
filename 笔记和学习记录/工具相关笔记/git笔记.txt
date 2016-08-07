@@ -216,3 +216,7 @@ git config --global color.ui true
 我们只需要敲一行命令，告诉Git，以后st就表示status：
 $ git config --global alias.st status
 
+输出信息正常格式显示：
+$ git config --global core.quotepath false
+
+
