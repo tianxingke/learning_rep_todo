@@ -128,47 +128,67 @@
 =======================================================================================================================
 	知识整理：
 1.使用new关键字，什么情况下创建对象？
-当函数没用通过new 调用的时候，则做为普通函数执行，那么当fnc()执行的时候，其函数内的this取决于调用该函数的宿主对象。
+	当函数没用通过new 调用的时候，则做为普通函数执行，那么当fnc()执行的时候，其函数内的this取决于调用该函数的宿主对象。
 
-当通过new 调用的时候，则会在内部创建一个空的对象并将this指向该对象，并且这个时候函数执行完成以后必须返回一个对象值，优先级：用户返回对象 > 内建对象，如果
-function fn1() {
-        this.x = 100;
-        return 'x';
-}
+	当通过new 调用的时候，则会在内部创建一个空的对象并将this指向该对象，并且这个时候函数执行完成以后必须返回一个对象值，优先级：用户返回对象 > 内建对象，如果
+	function fn1() {
+			this.x = 100;
+			return 'x';
+	}
 
-var o2 = new fn1();
-o2.x的值为100
+	var o2 = new fn1();
+	o2.x的值为100
 
-改成 
-function fn2() {
-        this.x = 100;
-        return 'x';
-}
+	改成 
+	function fn2() {
+			this.x = 100;
+			return 'x';
+	}
 
-var o2 = new fn2();
-o2.x的值为100
-也就是new function的结果必须是一个对象
+	var o2 = new fn2();
+	o2.x的值为100
+	也就是new function的结果必须是一个对象
 
-比如我定义了一个function，并执行new操作：
-function Foo(){}
-var foo = new Foo();
-补补脑：
-每一个函数中都会有一个叫prototype的属性，类型是object，即一个引用对象。
-每一个对象中都会有一个叫__proto__的属性，类型野是object，也是一个引用对象。
+	比如我定义了一个function，并执行new操作：
+	function Foo(){}
+	var foo = new Foo();
+	补补脑：
+	每一个函数中都会有一个叫prototype的属性，类型是object，即一个引用对象。
+	每一个对象中都会有一个叫__proto__的属性，类型野是object，也是一个引用对象。
 
-首先，当JavaScript引擎执行new操作时，会马上开辟一个块内存，创建一个空对象（并将this指向这个对象）。
+	首先，当JavaScript引擎执行new操作时，会马上开辟一个块内存，创建一个空对象（并将this指向这个对象）。
 
-接着，执行构造函数Foo()，对这个空对象进行构造（构造函数里有什么属性和方法都一一给这个空白对象装配上去，这就是为何它叫构造函数了）。
+	接着，执行构造函数Foo()，对这个空对象进行构造（构造函数里有什么属性和方法都一一给这个空白对象装配上去，这就是为何它叫构造函数了）。
 
-然而，给这个空对象添加了一个叫__proto__的属性，而且这个__proto__指向Foo()的prototype对象。换句话说，就是__proto__ = prototype;
+	然而，给这个空对象添加了一个叫__proto__的属性，而且这个__proto__指向Foo()的prototype对象。换句话说，就是__proto__ = prototype;
 	
 
 2.json整理
-可以在前端页面如下组织：
-var datas = '{"program":"'+program.value+'","element09":"'+element09.value
-				+'","bdgagency":"'+bdgagency.value+'","expfunc":"'+expfunc.value
-				+'","fundtype":"'+fundtype.value+'","text2":"'+text2.value+'"}';
-其中可以拼接一些变量。
+	可以在前端页面如下组织：
+	var datas = '{"program":"'+program.value+'","element09":"'+element09.value
+					+'","bdgagency":"'+bdgagency.value+'","expfunc":"'+expfunc.value
+					+'","fundtype":"'+fundtype.value+'","text2":"'+text2.value+'"}';
+	其中可以拼接一些变量。
 	
+3.原理说明
+			var a = '123';
+			function login2() {
+				alert(a);  		//undefined  变量提升后   var a,   此时a没有赋值。 
+				var a = 'abc';
+			}	
+	我们需要重点注意的是，只有函数声明形式才能被提升。 
 	
-	
+	但这一切随着 ES6 的 let/const 到来结束了，ES里除全局变量外，其它都使用 let/const，var 替换成 let 后变量提升就不复存在了。用 let 声明变量后，typeof 却不再安全了
+	if (condition) {
+		alert(typeof num); // Error!
+		let num = 100;
+	}
+	 
+
+	以前可以用 typeof == 'undefined'，来判断是否引入了某lib，比如jQuery
+
+	// 判断jQuery是否引入了
+	if (typeof $ !== 'undefined') {
+		// do something
+	}...
+	jQuery没有引入，$ 没有声明，这句也不会报错而影响到下面的代码执行，但如果是 let 声明的就会报错了。
