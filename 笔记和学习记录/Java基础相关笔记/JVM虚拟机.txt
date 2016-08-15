@@ -24,8 +24,27 @@
 
 	g):直接内存：直接内存并不是虚拟机运行时数据区的一部分。会抛出OutOfMemoryError异常。不受java堆大小限制。
 	
-3.通过参数 -XX:+HeapDumpOnOutOfMemoryError可以让虚拟机在出现内存溢出异常时Dump出当前的内存堆转储快照以便事后进行分析。 
-如果出现堆区域的异常，一般的手段是通过内存映像分析工具（如Eclipse Memory Analyzer）对Dump出来的堆转储快照进行分析，重点是确认内存中的对象是否是必要的，也就是要先分清楚到底是出现了内存泄漏（Memory Leak）还是内存溢出（Memory Overflow）。
+3.溢出
+	a):java堆溢出
+		通过参数 -XX:+HeapDumpOnOutOfMemoryError可以让虚拟机在出现内存溢出异常时Dump出当前的内存堆转储快照以便事后进行分析。 
+		如果出现堆区域的异常，一般的手段是通过内存映像分析工具（如Eclipse Memory Analyzer）对Dump出来的堆转储快照进行分析，重点是确认内存中的对象是否是必要的，也就是要先分清楚到底是出现了内存泄漏（Memory Leak）还是内存溢出（Memory Overflow）。如果是内存泄漏。。。。，如果不存在内存泄漏。。。。（第52页）。
+
+	b):虚拟机栈和本地方法栈溢出
+		-Xss
+		可以使用减少最大堆和减少栈容量的方式换取更多的线程，以这种“减少内存”的方式来解决内存溢出。
+		每个线程分配到的栈容量越大，可以建立的线程数量自然就越少，建立线程时就越容易把剩下的内存耗尽。
+
+	c):方法区和常量池溢出
+		intern（）方法的问题（第57页）不太明白
+		String str1 = new StringBuilder("计算机").append("软件").toString();
+		System.out.println(str1.intern() == str1);				//true	jdk1.7
+		String str2 = new StringBuilder("ja").append("va").toString();
+		System.out.println(str2.intern() == str2);				//false	jdk1.7
+
+	d):本机直接内存溢出
+		DirectMemory 容量可以通过 -XX:MaxDirectMemorySize指定，如果不指定，则默认与java堆最大值（-Xmx指定）一样。
+		由DirectMemory导致的内存溢出，一个明显的特征是在Heap Dump文件中不会看见明显的异常，如果发现OOM之后Dump文件很小，而程序中又直接或者间接使用了NIO，那就可以考虑检测一下是不是这方面的原因。
+
 
 
 
