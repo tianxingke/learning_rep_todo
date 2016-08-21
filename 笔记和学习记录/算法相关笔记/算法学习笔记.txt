@@ -1,8 +1,24 @@
-一、堆
+一、
+1.堆
 	若设二叉树的深度为h，除第 h 层外，其它各层 (1～h-1) 的结点数都达到最大个数，第 h 层所有的结点都连续集中在最左边，这就是完全二叉树。
 	http://www.cnblogs.com/JVxie/p/4859889.html
 	http://blog.csdn.net/genios/article/details/8157031
 
+
+二、
+
+
+
+
+学习方法 
+把所有经典算法写一遍 
+看算法有关源码 
+加入算法学习社区，相互鼓励学习 
+看经典书籍 
+刷题
+作者： IT程序狮 
+链接：http://www.imooc.com/article/3669
+来源：慕课网
 
 
 
