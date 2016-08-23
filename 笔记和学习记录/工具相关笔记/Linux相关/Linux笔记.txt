@@ -220,22 +220,62 @@
 	创建一个 tar 包：$ tar -cf shiyanlou.tar ~
 	上面命令中，-c表示创建一个 tar 包文件，-f用于指定创建的文件名，注意文件名必须紧跟在-f参数之后，比如不能写成tar -fc shiyanlou.tar，可以写成tar -f shiyanlou.tar -c ~。你还可以加上-v参数以可视的的方式输出打包的文件。上面会自动去掉表示绝对路径的/，你也可以使用-P保留绝对路径符。
 
+	解包一个文件(-x参数)到指定路径的已存在目录(-C参数)：
+	$ mkdir tardir
+	$ tar -xf shiyanlou.tar -C tardir
 	
+	只查看不解包文件-t参数：
+	$ tar -tf shiyanlou.tar
+
+	保留文件属性和跟随链接（符号链接或软链接），有时候我们使用tar备份文件当你在其他主机还原时希望保留文件的属性(-p参数)和备份链接指向的源文件而不是链接本身(-h参数)：
+	$ tar -cphf etc.tar /etc
+
+	对于创建不同的压缩格式的文件，对于tar来说是相当简单的，需要的只是换一个参数，这里我们就以使用gzip工具创建*.tar.gz文件为例来说明。
+	我们只需要在创建 tar 文件的基础上添加-z参数，使用gzip来压缩文件：
+	$ tar -czf shiyanlou.tar.gz ~
+	解压*.tar.gz文件：
+	$ tar -xzf shiyanlou.tar.gz
+	现在我们要使用其他的压缩工具创建或解压相应文件只需要更改一个参数即可：
+	压缩文件格式	参数
+	*.tar.gz	-z
+	*.tar.xz	-J
+	*tar.bz2	-j
+	
+8.文件系统和磁盘管理
+	mount挂载：
+	mount命令的一般格式如下：
+	mount [options] [source] [directory]
+	一些常用操作：
+	mount [-o [操作选项]] [-t 文件系统类型] [-w|--rw|--ro] [文件系统源] [挂载点]
+	我们现在直接来挂载我们创建的虚拟磁盘镜像到/mnt目录：
+	$ mount -o loop -t ext4 virtual.img /mnt 
+	# 也可以省略挂载类型，很多时候 mount 会自动识别
+	# 以只读方式挂载
+	$ mount -o loop --ro virtual.img /mnt
+	# 或者mount -o loop,ro virtual.img /mnt
+
+	使用 umount 命令卸载已挂载磁盘
+	# 命令格式 sudo umount 已挂载设备名或者挂载点，如：
+	$ sudo umount /mnt
+
+9.Linux任务计划crontab
+
+10.Linux软件安装
+	你可以使用如下方式重新安装：
+	$ sudo apt-get --reinstall install w3m
+
+	# 更新软件源
+	$ sudo apt-get update
+	# 升级没有依赖问题的软件包
+	$ sudo apt-get upgrade
+	# 升级并解决依赖关系
+	$ sudo apt-get dist-upgrade
+
+	卸载sudo apt-get remove w3m
 
 
-	d).
-	a).
-	a).
-	a).
-	a).
-	a).
-	a).
-
-
-
-
-
-
+11.Linux日志系统
+	
 
 
 
