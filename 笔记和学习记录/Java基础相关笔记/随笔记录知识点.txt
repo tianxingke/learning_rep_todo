@@ -187,8 +187,94 @@
 
 
 		wait()/notify()
+		在调用wait()之前，线程必须获得该对象的锁，因此只能在同步方法/同步代码块中调用wait()方法。
+		notify()的作用是，如果有多个线程等待，那么线程规划器随机挑选出一个wait的线程，对其发出通知notify()，并使它等待获取该对象的对象锁。注意"等待获取该对象的对象锁"，这意味着，即使收到了通知，wait的线程也不会马上获取对象锁，必须等待notify()方法的线程释放锁才可以。和wait()一样，notify()也要在同步方法/同步代码块中调用。
+		总结起来就是，wait()使线程停止运行，notify()使停止运行的线程继续运行。
+		
+		wait()释放锁以及notify()不释放锁
+
 
 		
+
+
+	Thread类中的静态方法
+		Thread类中的静态方法表示操作的线程是"正在执行静态方法所在的代码块的线程"。
+		currentThread()
+		
+		sleep(long millis)
+		yield()
+		暂停当前执行的线程对象，并执行其他线程。这个暂停是会放弃CPU资源的，并且放弃CPU的时间不确定
+
+		interrupted()
+
+	5.synchronized锁机制
+		关键字synchronized取得的锁都是对象锁，而不是把一段代码或方法（函数）当作锁，哪个线程先执行带synchronized关键字的方法，哪个线程就持有该方法所属对象的锁，其他线程都只能呈等待状态。但是这有个前提：既然锁叫做对象锁，那么势必和对象相关，所以多个线程访问的必须是同一个对象。
+	
+		从这个例子我们得出两个重要结论：
+		1、A线程持有Object对象的Lock锁，B线程可以以异步方式调用Object对象中的非synchronized类型的方法
+		2、A线程持有Object对象的Lock锁，B线程如果在这时调用Object对象中的synchronized类型的方法则需要等待，也就是同步
+
+		当一个线程得到一个对象锁后，再次请求此对象锁时时可以再次得到该对象的锁的。
+		当一个线程执行的代码出现异常时，其所持有的锁会自动释放。
+
+	6.synchronized锁方法块
+		用关键字synchronized声明方法在某些情况下是有弊端的，比如A线程调用同步方法执行一个较长时间的任务，那么B线程必须等待比较长的时间。这种情况下可以尝试使用synchronized同步语句块来解决问题。
+		
+		1、当A线程访问对象的synchronized代码块的时候，B线程依然可以访问对象方法中其余非synchronized块的部分，第一部分的执行结果证明了这一点
+		2、当A线程进入对象的synchronized代码块的时候，B线程如果要访问这段synchronized块，那么访问将会被阻塞，第二部分的执行结果证明了这一点
+		所以，从执行效率的角度考虑，有时候我们未必要把整个方法都加上synchronized，而是可以采取synchronized块的方式，对会引起线程安全问题的那一部分代码进行synchronized就可以了。
+
+		两个synchronized块之间具有互斥性
+		如果线程1访问了一个对象A方法的synchronized块，那么线程B对同一对象B方法的synchronized块的访问将被阻塞
+		
+		我们也可以得出一个结论：synchronized块获得的是一个对象锁，换句话说，synchronized块锁定的是整个对象。
+
+		Java还支持对"任意对象"作为对象监视器来实现同步的功能。这个"任意对象"大多数是实例变量及方法的参数，使用格式为synchronized(非this对象)。
+		锁非this对象具有一定的优点：如果在一个类中有很多synchronized方法，这时虽然能实现同步，但会受到阻塞，从而影响效率。但如果同步代码块锁的是非this对象，则synchronized(非this对象x)代码块中的程序与同步方法是异步的，不与其他锁this同步方法争抢this锁，大大提高了运行效率。
+		注意一下"private String anyString = new String();"这句话，现在它是一个全局对象，因此监视的是同一个对象。如果移到try里面，那么对象的监视器就不是同一个了，调用的时候自然是异步调用，可以自己试一下。
+		最后提一点，synchronized(非this对象x)，这个对象如果是实例变量的话，指的是对象的引用，只要对象的引用不变，即使改变了对象的属性，运行结果依然是同步的。
+
+		
+		静态同步方法和非静态同步方法持有的是不同的锁，前者是类锁，后者是对象锁。
+		假如一个类中有一个静态同步方法A，new出了两个类的实例B和实例C，线程D持有实例B，线程E持有实例C，只要线程D调用了A方法，那么线程E调用A方法必须等待线程D执行完A方法，尽管两个线程持有的是不同的对象。
+
+	7.volatile
+	用volatile修饰的变量，线程在每次使用变量的时候，都会读取变量修改后的最的值。volatile很容易被误用，用来进行原子性操作。
+	http://www.cnblogs.com/aigongsi/archive/2012/04/01/2429166.html
+
+
+	8.死锁
+	如何解决死锁： http://www.cnblogs.com/xrq730/p/4853713.html
+
+	9.ThreadLocal
+		ThreadLocal的三个理论基础：
+		1、每个线程都有一个自己的ThreadLocal.ThreadLocalMap对象
+		2、每一个ThreadLocal对象都有一个循环计数器
+		3、ThreadLocal.get()取值，就是根据当前的线程，获取线程中自己的ThreadLocal.ThreadLocalMap，然后在这个Map中根据第二点中循环计数器取得一个特定value值
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 五、原理性的知识体系
