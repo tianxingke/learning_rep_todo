@@ -251,8 +251,13 @@
 		1、每个线程都有一个自己的ThreadLocal.ThreadLocalMap对象
 		2、每一个ThreadLocal对象都有一个循环计数器
 		3、ThreadLocal.get()取值，就是根据当前的线程，获取线程中自己的ThreadLocal.ThreadLocalMap，然后在这个Map中根据第二点中循环计数器取得一个特定value值
-
+	http://www.cnblogs.com/xrq730/p/4854813.html
 	
+	ThreadLocal的作用及使用
+	ThreadLocal不是用来解决共享对象的多线程访问问题的，通过ThreadLocal的set()方法设置到线程的ThreadLocal.ThreadLocalMap里的是是线程自己要存储的对象，其他线程不需要去访问，也是访问不到的。
+	
+	10.ReentrantLock的使用和Condition
+	ReentrantLock和synchronized持有的对象监视器不同。
 
 
 
@@ -264,7 +269,7 @@
 
 
 
-
+	多次statrt（）一个线程会报：java.lang.IllegalThreadStateException错误。
 
 
 
@@ -289,6 +294,34 @@
 		
 
 	3.volatile关键字的底层实现原理
+
+	4.回调
+		经典的使用回调的方式： 
+		class A实现接口InA ——背景1
+		class A中包含一个class B的引用b ——背景2
+		class B有一个参数为InA的方法test(InA a) ——背景3
+		A的对象a调用B的方法传入自己，test(a) ——这一步相当于you call me
+		然后b就可以在test方法中调用InA的方法 ——这一步相当于i call you back
+
+		http://hellosure.iteye.com/blog/1130176
+
+
+	5.集合
+	HashMap
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	4.集合

@@ -4,6 +4,8 @@
 	http://www.cnblogs.com/JVxie/p/4859889.html
 	http://blog.csdn.net/genios/article/details/8157031
 
+索引优先队列：http://www.cnblogs.com/bethunebtj/p/4856563.html
+
 
 二、查找
 
