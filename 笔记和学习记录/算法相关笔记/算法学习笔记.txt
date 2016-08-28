@@ -6,6 +6,10 @@
 
 索引优先队列：http://www.cnblogs.com/bethunebtj/p/4856563.html
 
+	堆排序：演示：https://upload.wikimedia.org/wikipedia/commons/4/4d/Heapsort-example.gif（不知对错）
+
+
+
 
 二、查找
 
