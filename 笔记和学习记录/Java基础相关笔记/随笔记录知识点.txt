@@ -271,7 +271,7 @@
 
 	多次statrt（）一个线程会报：java.lang.IllegalThreadStateException错误。
 
-
+	多线程间指令可能由于指令重排而产生执行上的不确定性。
 
 
 
