@@ -1,0 +1,4 @@
+一、
+1.request和response
+
+	Web服务器的工作原理： http://www.importnew.com/15020.html
