@@ -1,8 +1,10 @@
-Ò»¡®ZookeeperÏà¹Ø
-	1.ZooKeeperÖĞ¸ÅÄî
-	¼¯Èº½ÇÉ«£ºLeader£¬Follower£¬Observer
-	»á»°£º
-	Êı¾İ½Úµã£º
-	°æ±¾£º
+ä¸€â€˜Zookeeperç›¸å…³
+	1.ZooKeeperä¸­æ¦‚å¿µ
+	é›†ç¾¤è§’è‰²ï¼šLeaderï¼ŒFollowerï¼ŒObserver
+	ä¼šè¯ï¼š
+	æ•°æ®èŠ‚ç‚¹ï¼š
+	ç‰ˆæœ¬ï¼š
+
+zookeeper æ¨¡æ‹Ÿéƒ¨ç½²ï¼šhttp://blog.csdn.net/huwei2003/article/details/49101269
 	
 	
