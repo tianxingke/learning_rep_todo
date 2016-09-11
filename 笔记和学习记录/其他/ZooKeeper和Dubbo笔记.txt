@@ -1,4 +1,4 @@
-一‘Zookeeper相关
+﻿一‘Zookeeper相关
 	1.ZooKeeper中概念
 	集群角色：Leader，Follower，Observer
 	会话：
@@ -6,5 +6,13 @@
 	版本：
 
 zookeeper 模拟部署：http://blog.csdn.net/huwei2003/article/details/49101269
+
+
 	
 	
+http://doc.okbase.net/congcong68/archive/112508.html
+http://blog.csdn.net/dreamcode/article/details/45312561
+http://blog.csdn.net/hejingyuan6/article/details/47405377
+http://www.roncoo.com/details/f614343765bc4aac8597c6d8b38f06fd
+
+http://blog.csdn.net/IRhythm/article/details/51340862

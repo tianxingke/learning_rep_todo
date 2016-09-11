@@ -9,3 +9,6 @@
 数据太多的表可以分表查询，水平分表就是把一张表分成多个表。
 MySQL分区，查询时表名不变，多个表。大表分成多个小表。
 4.网站加速
+
+
+http://blog.csdn.net/zhu_tianwei/article/details/43278347

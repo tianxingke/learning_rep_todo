@@ -1,3 +1,8 @@
+常用配置：
+显示GC日志：http://blog.csdn.net/zsy112371/article/details/44981923
+
+
+
 一、Java虚拟机运行时数据区
 1.结构图片http://img.blog.csdn.net/20160801164042333?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center
 2.运行时数据区组成：
@@ -46,12 +51,16 @@
 		由DirectMemory导致的内存溢出，一个明显的特征是在Heap Dump文件中不会看见明显的异常，如果发现OOM之后Dump文件很小，而程序中又直接或者间接使用了NIO，那就可以考虑检测一下是不是这方面的原因。
 
 
-二、垃圾收集器与内存分配策略
-1.
+二、垃圾收集器与内存分配策略（第三章）
+1.在java虚拟机中是通过 可达性分析 来判定对象是否存活的。
+	不可达的对象要至少经历两次标记过程，判定GC Roots时第一次进行标记并且进行一次筛选，筛选的条件是此对象是否有必要执行finalize()方法。不建议在代码中使用此方法，用try更好。
 
+2.JDK1.2之后，java对引用的概念进行了扩充，由强度依次减弱，将引用分为强引用、软引用、弱引用、虚引用4种。
 
+3.方法区（永久代）回收包括两部分：废弃常量和无用的类。
 
-
+4.垃圾收集算法
+	
 
 
 

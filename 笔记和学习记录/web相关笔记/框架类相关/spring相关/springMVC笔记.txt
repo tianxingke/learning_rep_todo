@@ -31,3 +31,5 @@ public XXXclass{
 
 
 springMVC‘≠¿Ì£∫
+
+http://blog.csdn.net/liujiahan629629/article/details/21655007
