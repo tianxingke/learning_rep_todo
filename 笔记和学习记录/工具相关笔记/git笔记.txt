@@ -219,4 +219,37 @@ $ git config --global alias.st status
 输出信息正常格式显示：
 $ git config --global core.quotepath false
 
+--------------------------
+1.
+.git 路径问题：递归找最近的那个。
+2.
+提交后，用git diff HEAD -- readme.txt命令可以查看工作区和版本库里面最新版本的区别：
+3.
+git checkout -- file可以丢弃 工作区 的修改.  总之，就是让这个文件回到最近一次git commit或git add时的状态。
+git checkout -- file命令中的--很重要，没有--，就变成了“切换到另一个分支”的命令
+4.
+用命令git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区
+5.git log
+	git reflog
+	$ git reset --hard HEAD^
+首先，Git必须知道当前版本是哪个版本，在Git中，用HEAD表示当前版本，也就是最新的提交3628164...882e1e0（注意我的提交ID和你的肯定不一样），上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。
 
+6.删除版本库的文件
+git rm 	<file>
+然后提交
+-------------------
+1.git撤销
+如果想撤销修改，没有git add
+git checkout a.txt
+
+如果已经git add ,已在暂存区了
+git reset a.txt
+
+如果想撤销到某个版本，但是不想改自己暂存区和工作区
+git reset --soft 提交的版本id
+
+如果想撤销到某个版本，自己的暂存区和工作区也不要了
+git reset --hard 提交版本ID
+
+
+git reflog show master
