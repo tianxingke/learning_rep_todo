@@ -1,0 +1,22 @@
+一、
+	一般来说，oracle数据库安装后，里面有很多个默认账号和密码，比较常用的是：账号：scott 密码:tiger   账号:system 密码:manager  账号:sys  密码:任意字符。
+	第一次登陆的时候可以使用system 密码如果安装时设置了就使用安装时的密码。
+	当我们想创建一个账号时，可以使用sys登录sysdba后，创建用户（需要授权），代码如下
+
+	create user 用户名 identified by "密码";  
+	授权：grant create session to 用户名;  
+		    grant create table to  用户名;  
+		    grant create tablespace to  用户名;  
+		    grant create view to  用户名;
+	我们一般使用的是用scott登录sysdba，这时候有可能出现账户未解锁的状态，这时候可以用
+
+	alter user scott account unlock;
+	来解锁账户。解锁之后可能会要求你改密码：可以用
+
+	alter user scott identified by tiger;
+	
+	再登录
+	conn scott/tiger;
+
+二、常用语句
+	
