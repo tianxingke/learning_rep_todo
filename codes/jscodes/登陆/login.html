@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function openpage(url){
+				var win = window.open(url,'longtulogin','left=300,top=100,width=600,height=500,fullscreen=no');
+				console.log('re:'+win);
+				
+				win.onload=function(){
+					var loginbtn = win.document.getElementsByName("login");
+					console.log(loginbtn[0]);
+					loginbtn.click();
+				win.close();
+				}
+			}
+			
+			function checktime(datetime){
+				var ruletime = new Date();
+				console.log(Date.parse(datetime));
+				if(Date.parse(datetime)){
+					console.log(datetime);
+				}
+				return true;
+			}
+			function app(){
+				alert('d');
+				var datetime ='';
+				var url = 'http://124.207.8.234:8887/ltrc/login.jsp';
+				if(!checktime(datetime)) return;
+				console.log('star');
+				openpage(url);
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+		<input type="button" value="登陆" style="margin: 20px;" onclick="app()"/>
+	</body>
+</html>

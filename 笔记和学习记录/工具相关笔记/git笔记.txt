@@ -219,6 +219,26 @@ $ git config --global alias.st status
 输出信息正常格式显示：
 $ git config --global core.quotepath false
 
+Git Push 避免用户名和密码方法：
+http://www.cnblogs.com/ballwql/p/3462104.html https://my.oschina.net/u/244918/blog/393642
+
+
+
+
+
+
+
+
+
+
+
+解决git上传慢：
+原来是这个域名github.global.ssl.fastly.NET被限制。很简单，去查查这个域名对应的ip，然后修改自己电脑的hosts文件
+上IPAddress.com即可查到最新的ip。
+打开C->windows->system32->driver->etc->hosts,在最后一行加入如下一句：
+23.235.43.249   github.global.ssl.fastly.net 
+
+效果不是很好
 --------------------------
 1.
 .git 路径问题：递归找最近的那个。

@@ -5,8 +5,12 @@
 	数据节点：
 	版本：
 
-zookeeper 模拟部署：http://blog.csdn.net/huwei2003/article/details/49101269
 
+
+
+zookeeper 模拟部署：http://blog.csdn.net/huwei2003/article/details/49101269
+http://www.blogjava.net/BucketLi/archive/2010/12/21/341268.html
+http://www.jikexueyuan.com/course/1813.html
 
 	
 	
