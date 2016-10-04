@@ -1,6 +1,8 @@
 package learning.test;
 
-import learning.demo.algorithm.BST.BST;
+import learning.demo.algorithm.search.BST.BST;
+
+
 
 
 public class TestBST {
@@ -11,7 +13,7 @@ public class TestBST {
 		bst.put(5, "e");
 		bst.put(3, "c");
 		System.out.println(bst.toString());
-		
+		System.out.println("1".compareTo("2"));
 		System.out.println(bst.floor(5));
 		System.out.println(bst.rank(5));
 	}
