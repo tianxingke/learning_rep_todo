@@ -51,6 +51,7 @@
 	变更文件所有者为shiyanlou ：$ sudo chown shiyanlou iphone6
 	
 	修改文件权限：$ chmod 700 <文件>
+	使某个文件夹下的文件都改变权限：chmod  777 zookeeper/ -R
 
 	文件系统目录结构图：http://img.blog.csdn.net/20160803142833010?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center
 
