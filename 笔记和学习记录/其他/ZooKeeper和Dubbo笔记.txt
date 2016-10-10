@@ -7,7 +7,7 @@
 
 
 
-
+zookeeper原理：http://cailin.iteye.com/blog/2014486/
 zookeeper 模拟部署：http://blog.csdn.net/huwei2003/article/details/49101269
 http://www.blogjava.net/BucketLi/archive/2010/12/21/341268.html
 http://www.jikexueyuan.com/course/1813.html
@@ -27,3 +27,4 @@ http://blog.csdn.net/shenlan211314/article/details/6170717
 
 二、dubbo
 http://blog.csdn.net/huwei2003/article/details/49149323
+http://blog.csdn.net/rainyear/article/details/20150553
