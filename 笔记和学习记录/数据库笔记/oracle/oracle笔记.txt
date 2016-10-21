@@ -39,10 +39,13 @@
 	　　date 一个日期值
 	　　fmt 日期格式，该日期将由指定的元素格式所截去。忽略它则由最近的日期截去
 
-	1.oracle查看表下的触发器：
+	3.oracle查看表下的触发器：
 	select t.TRIGGER_NAME,t.STATUS, t.* from all_triggers t where t.TABLE_NAME='T_BDGSUB' and t.OWNER='IFMIS' ; --与用plsql单独到表下去看是一样的。
 
 
 	select * from user_views;
 	select *from user_tables;
+	
+
+	4.oracle对象和表的解锁和锁定
 

@@ -195,9 +195,29 @@
 
 
 
+4. href="javascript:xxx(this);"和onclick="javascript:xxx(this);"的区别
+	href="javascript:xxx(this);"和onclick="javascript:xxx(this);"
+	一直以为这两种写法是等同的，今天在项目中使用时发现前者的this根本拿不到触发事件的A标签，而后者可以拿到
+	一般在做分页按钮时会用A标签来做，但是一般都会写<a href="#" onclick="turnPage(1,10)">之类的
+	href="#"会导致分页在跳转时页面先跳到当前页面顶部用户体验不好，所以一般推荐写成
+	<a href="javascript:void(0);" onclick="turnPage(1,10,this)">
+	甚至如果跳转的方法不需要拿到当前的A标签this的话，也可以直接写成
+	<a href="javascript:turnPage(1,10);" >
 
+	1)点击链接后不做任何事情 
+		<a href="javascript：void(0);" >test</a>  
+		<a href="javascript：;" >test</a>  
+		<a href="####" >test</a> //使用2个到4个#，见的大多是"####"，也有使用"#all"等其他的
 
+	2)点击链接后，响应用户自定义的点击事件
+		<a href="javascript：void(0)" onclick="doSomething()">test</a>  
+		<a href="#" onclick="doSomething();return false;">什么问题都解决了,包括浏览器不兼容问题</a> //或者直接使用href=""  
+		<a href="#" onclick="alert();event.returnValue=false;">test</a>
+	
+	javascript:;与javascript:void(0)使用介绍：http://www.jb51.net/article/37904.htm
 
+	下面的代码创建了一个超级链接，用户单时会提交表单。
+	<A HREF="javascript:void(document.form.submit())">单此处提交表单</A>
 
 
 
@@ -232,3 +252,4 @@ ctrl+shift+i 呼出开发人员工具(IE 里F12)
 
 
 js的注入：http://www.jb51.net/article/92639.htm
+
