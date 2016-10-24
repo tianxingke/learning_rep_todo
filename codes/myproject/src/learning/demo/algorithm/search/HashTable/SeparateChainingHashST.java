@@ -31,14 +31,14 @@ public class SeparateChainingHashST<Key, Value> {
 	private int hash(Key key) {
 		return (key.hashCode() & 0x7fffffff) % M;
 	}
-
-	public Value get(Key key) {
-		return (Value) st[hash(key)].get(key);
-	}
-
-	public void put(Key key, Value val) {
-		st[hash(key)].put(key, val);
-	}
+//
+//	public Value get(Key key) {
+//		return (Value) st[hash(key)].get(key);
+//	}
+//
+//	public void put(Key key, Value val) {
+//		st[hash(key)].put(key, val);
+//	}
 
 	//--待实现
 	public Iterable<Key> keys() {
