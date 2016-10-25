@@ -65,6 +65,11 @@ public class LinearProbingHashST<Key, Value> {
 		}
 	}
 
+	private boolean contains(Key key) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	private void resize(int cap) {
 		LinearProbingHashST<Key, Value> t;
 		t = new LinearProbingHashST<>(cap);
