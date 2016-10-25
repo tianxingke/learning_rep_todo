@@ -65,7 +65,22 @@
 
 	复制：复制一个文件或目录到指定目录。
 	例子将之前创建的"test"文件复制到"/home/shiyanlou/father/son/grandson"目录中：$ cp test father/son/grandson
+		-a 尽可能将档案状态、权限等资料都照原状予以复制。
+		-r 若 source 中含有目录名，则将目录下之档案亦皆依序拷贝至目的地。
+		-f 若目的地已经有相同档名的档案存在，则在复制前先予以删除再行复制。
 	要成功复制目录需要加上-r或者-R参数，表示递归复制：$ cp -r father family
+
+	scp
+	scp是有Security的文件copy，基于ssh登录。操作起来比较方便，比如要把当前一个文件copy到远程另外一台主机上，可以如下命令。
+	scp /home/daisy/full.tar.gz root@172.19.2.75:/home/root
+	然后会提示你输入另外那台172.19.2.75主机的root用户的登录密码，接着就开始copy了。
+	如果想反过来操作，把文件从远程主机copy到当前系统，也很简单。
+	scp root@/full.tar.gz 172.19.2.75:/home/root/full.tar.gz home/daisy/full.tar.gz
+	注意两点：
+		1.如果远程服务器防火墙有特殊限制，scp便要走特殊端口，具体用什么端口视情况而定，命令格式如下：
+		#scp -p 4588 remote@www.abc.com:/usr/local/sin.sh /home/administrator
+		2.使用scp要注意所使用的用户是否具有可读取远程服务器相应文件的权限。
+
 
 	删除：可以使用-f参数强制删除文件   $ rm -f test
 	跟复制目录一样，要删除一个目录，也需要加上-r或-R参数：$ rm -r family

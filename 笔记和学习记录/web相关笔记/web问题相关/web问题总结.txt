@@ -3,9 +3,14 @@
 
 	Web服务器的工作原理： http://www.importnew.com/15020.html
 
+	 getAttribute()与getParameter的区别 : http://blog.itpub.net/26308209/viewspace-720723/
+
 2.cookie和session
 
 	Cookie/Session机制详解: http://blog.csdn.net/fangaoxin/article/details/6952954/
+
+3.TCP/IP
+	TCP/IP协议三次握手与四次握手流程解析: http://www.cnblogs.com/wuyuan2011woaini/p/4876588.html
 
 
 
