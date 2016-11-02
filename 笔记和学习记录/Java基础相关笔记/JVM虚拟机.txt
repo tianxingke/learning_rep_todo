@@ -214,10 +214,43 @@
 		详见P236
 	
 	4.类加载及执行子系统的案例与实战
-		tomcat、osgi、		
+		tomcat、osgi、字节码生成技术与动态代理的实现、retrotranslator。
+		实战 未看。
+
+五、程序编译与代码优化
+	
+	1.早期（编译期）优化
+	包装类的“==”运算符在不遇到算数运算符的情况下不会自动拆箱，以及他们的equals（）方法不处理数据转型。
+		Integer a = 1;
+		Integer b = 2;
+		Integer c = 3;
+		Integer d = 3;
+		Integer e = 321;
+		Integer f = 321;
+		Long g = 3L;
+
+		System.out.println(c == d);
+		System.out.println(e == f);
+		System.out.println(c == (a + b));
+		System.out.println(c.equals(a + b));
+		System.out.println(g == (a + b));
+		System.out.println(g.equals(a + b));
+
+		结果：（jdk1.7）   如果把Integer改为int结果会不同
+			true
+			false
+			true
+			true
+			true
+			false
 
 
 
+	实战：未看
+
+	2.晚期（运行期）优化
+		
+	
 
 
 

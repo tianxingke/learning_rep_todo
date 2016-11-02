@@ -1,2 +1,3 @@
 http://124.207.8.234:9999/svn/YFB-DOC/00共享/13测试申请/04版本发布计划/2016/研发四部
-码云：https://git.oschina.net/tianxingke/demo_sign/blob/master/signflag.txt
+码云 修改页：https://git.oschina.net/tianxingke/demo_sign/blob/master/signflag.txt
+只显示元数据：https://git.oschina.net/tianxingke/demo_sign/raw/master/signflag.txt

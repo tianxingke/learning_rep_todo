@@ -29,7 +29,7 @@ public class Testlogindemo implements Runnable {
 		if ((c.get(Calendar.HOUR_OF_DAY) > 7) && (c.get(Calendar.HOUR_OF_DAY) < 9)) {
 			h = 8;
 			what = "signin";
-		} else if ((c.get(Calendar.HOUR_OF_DAY) > 17) && (c.get(Calendar.HOUR_OF_DAY) < 19)) {
+		} else if ((c.get(Calendar.HOUR_OF_DAY) > 16) && (c.get(Calendar.HOUR_OF_DAY) < 19)) {
 			h = 18;
 			// 下午设置为18:01左右
 			m = 1;
@@ -46,6 +46,7 @@ public class Testlogindemo implements Runnable {
 		String tt = null;
 		info += "程序启动>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + "\r";
 		info += "约定时间 ： " + ct + "\r";
+		System.out.println(info);
 		while (flag) {
 
 			try {
@@ -58,6 +59,13 @@ public class Testlogindemo implements Runnable {
 			// 当前时间
 			tt = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(c2.getTime());
 
+			int longtime = (c2.get(Calendar.HOUR_OF_DAY) - c.get(Calendar.HOUR_OF_DAY));
+			if (longtime > 3) {
+				info += "超过运行规定时间：3小时。。。。。" + "\r";
+				flag = false;
+				break;
+			}
+
 			if (!"error".equals(what) && c.get(Calendar.MINUTE) == c2.get(Calendar.MINUTE) && (c.get(Calendar.SECOND) == c2.get(Calendar.SECOND))) {
 				sign = new Sign();
 				try {
@@ -68,7 +76,10 @@ public class Testlogindemo implements Runnable {
 
 						for (int i = 0; i < 5 && result == false; i++) {
 							info += "signin,请求开始：i=" + i + ",result=" + result + "\r";
+
 							result = true;// ceshi
+							System.out.println("in " + tt);
+
 							// result = sign.signMain_signin();
 							info += "signin,请求结束：i=" + i + ",result=" + result + "\r";
 
@@ -76,6 +87,10 @@ public class Testlogindemo implements Runnable {
 					} else {
 						for (int i = 0; i < 5 && result == false; i++) {
 							info += "signout,请求开始：i=" + i + ",result=" + result + "\r";
+
+							System.out.println("out " + tt);
+							result = true;
+
 							// result = sign.signMain_signout();
 							info += "signout,请求结束：i=" + i + ",result=" + result + "\r";
 
@@ -85,7 +100,7 @@ public class Testlogindemo implements Runnable {
 					if (result) {
 						flag = false;
 						Thread.currentThread().interrupt();
-						info += "操作成功!";
+						info += "操作成功!" + "\r";
 					} else {
 						flag = false;
 						Thread.currentThread().interrupt();
@@ -102,10 +117,10 @@ public class Testlogindemo implements Runnable {
 			tt = null;
 			c2 = null;
 		}
-
+		info += "程序结束>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + "\r";
 		File file = null;
 		try {
-			file = new File("D:/sign/signlog_" + c.get(Calendar.MONTH) + ".txt");
+			file = new File("D:/sign/signlog_" + c.get(Calendar.YEAR) + c.get(Calendar.MONTH) + ".txt");
 			Utlis.writeLog(info, file);
 		} catch (Exception e) {
 		}
@@ -114,7 +129,7 @@ public class Testlogindemo implements Runnable {
 	public static void main(String[] args) throws Exception {
 		boolean open = new Testlogindemo().judgeAction(null);
 		if (open) {
-			// new Thread(new Testlogindemo()).start();
+			new Thread(new Testlogindemo()).start();
 		}
 	}
 
@@ -127,7 +142,9 @@ public class Testlogindemo implements Runnable {
 	 */
 	private boolean judgeAction(String url) {
 		boolean action = false;
-		url = "https://git.oschina.net/tianxingke/demo_sign/blob/master/signflag.txt";
+		// url =
+		// "https://git.oschina.net/tianxingke/demo_sign/blob/master/signflag.txt";
+		url = "https://git.oschina.net/tianxingke/demo_sign/raw/master/signflag.txt";// 只显示元数据
 		try {
 			URL reurl = new URL(url);
 			InputStreamReader in = new InputStreamReader(reurl.openStream());
@@ -137,11 +154,11 @@ public class Testlogindemo implements Runnable {
 			while ((t = bf.readLine()) != null) {
 				sb.append(t);
 			}
-
+			System.out.println(sb);
 			// yes 代表执行，no代表不执行
-			if (sb.toString().contains("##action=yes##")) {
+			if (sb.toString().contains("action=yes")) {
 				action = true;
-			} else if (sb.toString().contains("##action=no##")) {
+			} else if (sb.toString().contains("action=no")) {
 				action = false;
 			}
 		} catch (Exception e) {
