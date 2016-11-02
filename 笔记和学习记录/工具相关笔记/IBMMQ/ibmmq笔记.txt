@@ -1,0 +1,78 @@
+一、安装
+	1.安装后运行出现 “AMQ7077:你未被授权来进行请求的操作 ” 是因为没有使用管理员运行造成的。cmd要以管理员身份运行即可。
+
+	入门新手可以看看，关于Java连接WebsphereMQ（也就是MQSeries）的内容： http://blog.csdn.net/dolphin29/article/details/12037865
+二、使用
+1.IBM WebSphere MQ 7.5基本用法：http://www.cnblogs.com/yjmyzz/p/3505325.html
+
+	WebSphere MQ 入门指南： http://www.cnblogs.com/me115/p/3456407.html
+
+	IBM WebSphere MQ 系列（一）基础知识 http://kakajw.iteye.com/blog/1827166
+
+	java所需jar包在安装目录下有。
+	安装程序的帮助按钮可以点出帮助文档。
+
+
+
+本地
+a-1).使用 MQSC 创建队列管理器
+	过程
+	1.打开命令提示符，通过输入以下命令，创建名为 QM_APPLE 的队列管理器： 
+		crtmqm QM_APPLE
+		此时会显示消息，告诉您已经创建了队列和缺省 WebSphere MQ 对象。 
+	通过输入以下命令来启动此队列管理器： 
+		strmqm
+		此时会显示一条消息，告诉您何时启动了该队列管理器。 
+	结果
+	您现在已经创建了名为 QM_APPLE 的队列管理器。
+
+a-2).使用 MQSC 创建本地队列
+	打开命令提示符，然后按照以下步骤操作：
+	过程
+	1.通过输入以下命令来启用 MQSC 命令： 
+		runmqsc
+	输入以下命令： 
+		define qlocal (Q1)
+		此时会显示消息，告诉您已经创建了队列和缺省 WebSphere MQ 对象。
+
+	通过输入以下命令来停止 MQSC： 
+		end
+	结果
+	您现在已经创建了名为 Q1 的本地队列。
+
+
+a-3).使用 MQSC 来将测试消息放入队列
+	使用 amqsput 样本程序来将消息放入您创建的队列。
+	在 Windows 上，缺省情况下样本程序随 WebSphere MQ 服务器或客户机一起安装。在 Linux 上，需要安装样本程序 RPM。
+	打开命令提示符，然后按照以下步骤操作：
+	过程
+	启动 amqsput 样本程序，如下所示：
+	在 Linux 上，更改为 MQ_INSTALLATION_PATH/samp/bin 目录，其中 MQ_INSTALLATION_PATH 表示安装了 WebSphere MQ 的高级别目录。输入以下命令：
+		./amqsput Q1 QM_APPLE
+	在 Windows 上，输入命令：
+		amqsput Q1 QM_APPLE
+	此时会显示以下消息：
+		Sample AMQSPUT0 start
+		target queue is Q1 
+
+	在一行或多行上输入某些消息文本，然后按 Enter 键两次。 此时会显示以下消息：
+		Sample AMQSPUT0 end
+
+	结果
+	您现在已经创建了测试消息并将其放入本地队列。
+	在 MQ 资源管理器“内容”视图中，您会注意到 Q1 的当前队列深度值现在为 1.
+
+a-4).验证是否已发送测试消息
+	过程
+	启动 amqsget 样本程序：
+	在 Windows 上，输入以下命令：
+		amqsget Q1 QM_APPLE
+	在 Linux 上，更改为 MQ_INSTALLATION_PATH/samp/bin 目录，其中 MQ_INSTALLATION_PATH 表示 WebSphere MQ 所安装在的高级目录。输入以下命令：
+		./amqsget Q1 QM_APPLE
+	结果
+	此时会启动该样本程序，并显示您的消息以及此队列上的任何其他消息。在暂停 15 秒钟后，样本程序结束，并再次显示命令提示符。
+
+
+远程
+
+

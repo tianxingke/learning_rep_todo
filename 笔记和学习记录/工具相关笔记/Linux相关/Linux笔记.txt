@@ -315,7 +315,13 @@
 
 第二部分：Linux使用技巧
 1.数字雨
-cmatrix
+	cmatrix
+2.修改Linux系统语言
+	#vi /etc/sysconfig/i18n 
+	LANG="en_US.UTF-8" 
+
+3.启动ssh服务
+	service sshd start
 
 
 
