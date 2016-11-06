@@ -17,6 +17,30 @@
 	
 	再登录
 	conn scott/tiger;
+	
+	一、
+		1.连接字符串：ip：port/服务名。
+		2.每天学习和优化一个top sql。
+		3.oracle 通信：  
+			方式一：
+			tnsping  ora10g
+			sqlplus sys/oracle@10g  as  sysdba    走网络的方式
+			ora10g    必须在 $ORACLE_HOME/network/admin/tnsnames.ora中进行配置。
+			方式二：
+			sqlplus sys/oracle@IP地址:1521/ora10g  as  sysdba
+			不需要任何配置  ，但oracle服务器必须在listener.ora定义被远程的方式。
+			
+			oracle网络配置：
+			
+		4.连接
+		sqlpus / as sysdba   这种方式不走网络
+		conn   /    as    sysdba
+
+		alter user  scott  identified  by   tiger   account    unlock;
+
+
+		conn   scott/tiger
+
 
 二、常用语句
 
