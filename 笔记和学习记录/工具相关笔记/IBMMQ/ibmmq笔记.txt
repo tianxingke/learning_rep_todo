@@ -11,7 +11,7 @@
 
 	java所需jar包在安装目录下有。
 	安装程序的帮助按钮可以点出帮助文档。
-
+	Linux上安装MQ7.5： http://www.blogjava.net/TrampEagle/archive/2013/01/05/393842.html
 
 
 本地

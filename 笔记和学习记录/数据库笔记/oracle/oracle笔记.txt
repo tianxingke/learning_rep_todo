@@ -18,28 +18,36 @@
 	再登录
 	conn scott/tiger;
 	
-	一、
-		1.连接字符串：ip：port/服务名。
-		2.每天学习和优化一个top sql。
-		3.oracle 通信：  
-			方式一：
-			tnsping  ora10g
-			sqlplus sys/oracle@10g  as  sysdba    走网络的方式
-			ora10g    必须在 $ORACLE_HOME/network/admin/tnsnames.ora中进行配置。
-			方式二：
-			sqlplus sys/oracle@IP地址:1521/ora10g  as  sysdba
-			不需要任何配置  ，但oracle服务器必须在listener.ora定义被远程的方式。
-			
-			oracle网络配置：
-			
-		4.连接
-		sqlpus / as sysdba   这种方式不走网络
-		conn   /    as    sysdba
+	1.连接字符串：ip：port/服务名。
+	2.每天学习和优化一个top sql。
+	3.oracle 通信：  
+		方式一：
+		tnsping  ora10g
+		sqlplus sys/oracle@10g  as  sysdba    走网络的方式
+		ora10g    必须在 $ORACLE_HOME/network/admin/tnsnames.ora中进行配置。
+		方式二：
+		sqlplus sys/oracle@IP地址:1521/ora10g  as  sysdba
+		不需要任何配置  ，但oracle服务器必须在listener.ora定义被远程的方式。
+		
+		oracle网络配置：
+		
+	4.连接
+	sqlpus / as sysdba   这种方式不走网络
+	conn   /    as    sysdba
 
-		alter user  scott  identified  by   tiger   account    unlock;
+	alter user  scott  identified  by   tiger   account    unlock;
 
 
-		conn   scott/tiger
+	conn   scott/tiger
+
+
+
+
+
+
+
+
+
 
 
 二、常用语句
@@ -64,12 +72,33 @@
 	　　fmt 日期格式，该日期将由指定的元素格式所截去。忽略它则由最近的日期截去
 
 	3.oracle查看表下的触发器：
-	select t.TRIGGER_NAME,t.STATUS, t.* from all_triggers t where t.TABLE_NAME='T_BDGSUB' and t.OWNER='IFMIS' ; --与用plsql单独到表下去看是一样的。
+		select t.TRIGGER_NAME,t.STATUS, t.* from all_triggers t where t.TABLE_NAME='T_BDGSUB' and t.OWNER='IFMIS' ; --与用plsql单独到表下去看是一样的。
 
 
-	select * from user_views;
-	select *from user_tables;
+		select * from user_views;
+		select *from user_tables;
 	
 
 	4.oracle对象和表的解锁和锁定
+	
+	5.oracle删除用户下的所有表的数据，保留表
+		begin
+			for x in (select table_name from user_tables) loop
+				execute immediate 'delete ' || x.table_name ; 
+			end loop ; 
+		end ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

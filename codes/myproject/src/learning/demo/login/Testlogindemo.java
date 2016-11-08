@@ -47,6 +47,7 @@ public class Testlogindemo implements Runnable {
 		info += "程序启动>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + "\r";
 		info += "约定时间 ： " + ct + "\r";
 		System.out.println(info);
+		Calendar clong = null;
 		while (flag) {
 
 			try {
@@ -56,13 +57,19 @@ public class Testlogindemo implements Runnable {
 
 			c2 = Calendar.getInstance();
 
+			
+			if (clong == null)
+				clong = c2;
 			// 当前时间
 			tt = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(c2.getTime());
 
-			int longtime = (c2.get(Calendar.HOUR_OF_DAY) - c.get(Calendar.HOUR_OF_DAY));
-			if (longtime > 3) {
-				info += "超过运行规定时间：3小时。。。。。" + "\r";
+			int longtime = (c2.get(Calendar.HOUR_OF_DAY) - clong.get(Calendar.HOUR_OF_DAY));
+			if (longtime > 1) {
+				String tlong = "";
+				tlong = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(clong.getTime());
+				info += "超过运行规定时间区间：2小时,区间[" + tlong + "--->" + tt + "]\r";
 				flag = false;
+				Thread.currentThread().interrupt();
 				break;
 			}
 
@@ -117,10 +124,10 @@ public class Testlogindemo implements Runnable {
 			tt = null;
 			c2 = null;
 		}
-		info += "程序结束>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + "\r";
+		info += "程序结束>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + "\r\r";
 		File file = null;
 		try {
-			file = new File("D:/sign/signlog_" + c.get(Calendar.YEAR) + c.get(Calendar.MONTH) + ".txt");
+			file = new File("D:/sign/signlog_" + c.get(Calendar.YEAR) + (c.get(Calendar.MONTH) + 1) + ".txt");
 			Utlis.writeLog(info, file);
 		} catch (Exception e) {
 		}

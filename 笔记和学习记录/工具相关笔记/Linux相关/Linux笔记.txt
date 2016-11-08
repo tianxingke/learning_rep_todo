@@ -290,6 +290,16 @@
 	卸载sudo apt-get remove w3m
 
 
+	Ubuntu安装rpm包：
+	首先安装alien     sudo apt-get install alien
+	1.然后 可以用alien将rpm包转换成deb包 sudo alien flash-plugin.i386.rpm  会在目录下生成同名的deb包 ，接着用sudo dpkg -i flash-plugin.i386.deb   命令安装即可。
+	2. 也可以直接使用 sudo alien -i flash-plugin.i386.rpm 直接安装rpm包。
+
+
+	Ubuntu 使用dpkg -l  可以看到已经安装的软件
+
+	
+
 11.Linux日志系统
 	
 
