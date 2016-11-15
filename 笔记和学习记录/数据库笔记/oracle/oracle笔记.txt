@@ -87,6 +87,19 @@
 				execute immediate 'delete ' || x.table_name ; 
 			end loop ; 
 		end ;
+	
+	6.sql进行格式化
+		xx 333
+		xxxxx 44
+		xx 555
+		xxxxx 66    
+		这种格式使用union 可以实现
+
+		
+
+		123456 xxx oo
+		123456 xxx oo
+		这种格式使用left join 可以实现
 
 
 
