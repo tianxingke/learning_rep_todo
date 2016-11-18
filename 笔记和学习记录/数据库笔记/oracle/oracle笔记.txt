@@ -100,6 +100,8 @@
 		123456 xxx oo
 		123456 xxx oo
 		这种格式使用left join 可以实现
+	7.修改表字段名
+		alter table A rename column a to c
 
 
 

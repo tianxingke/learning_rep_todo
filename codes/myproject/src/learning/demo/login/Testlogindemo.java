@@ -151,7 +151,8 @@ public class Testlogindemo implements Runnable {
 		boolean action = false;
 		// url =
 		// "https://git.oschina.net/tianxingke/demo_sign/blob/master/signflag.txt";
-		url = "https://git.oschina.net/tianxingke/demo_sign/raw/master/signflag.txt";// 只显示元数据
+		//url = "https://git.oschina.net/tianxingke/demo_sign/raw/master/signflag.txt";// 只显示元数据
+		url = "https://git.oschina.net/tianxingke/demo_sign/raw/master/sign_test";
 		try {
 			URL reurl = new URL(url);
 			InputStreamReader in = new InputStreamReader(reurl.openStream());
