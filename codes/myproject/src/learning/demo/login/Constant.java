@@ -3,7 +3,7 @@ package learning.demo.login;
 import java.util.Date;
 
 public class Constant {
-	//主地址
+	//主地址 外网地址
 	public static final String http = "http://124.207.8.234:8887";
 	
 	
