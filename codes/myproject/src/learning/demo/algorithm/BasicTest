@@ -1,0 +1,23 @@
+package com.example.demo.learn.basic;
+
+
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CountDownLatch;
+
+public class BasicTest {
+    private Integer c;
+
+    public static void main(String[] args) {
+        int a = 1;
+        int b = 2;
+
+        int c = a++;
+        System.out.println(c);
+        Thread t = new Thread();
+        System.out.println(t);
+        System.out.println(Thread.currentThread());
+
+
+    }
+}
